@@ -117,16 +117,14 @@ arithmetic trigger expressions, and wider automatic probes need direct RTL
 integration with the analyzer in `ffpga/src/`. Changing a trigger creates a new
 FPGA image.
 
+## Demo (Multiplier)
 The four-bit multiplier is another starter example:
 
 ```powershell
 .\.venv\Scripts\python trace.py examples\multiplier\trace.json
 ```
 
-It triggers when `a == 6 && b == 7`; the product at that sample is 42.
-
-## Demo (Multiplier)
-
+It triggers when `a == 6 && b == 7`.
 GTKWave shows the VCD capture triggering at `a = 6`, `b = 7`, and `product = 42`.
 
 ![Four-bit multiplier capture in GTKWave](media/multiplier_gtkwave.png)
@@ -136,11 +134,10 @@ GTKWave shows the VCD capture triggering at `a = 6`, `b = 7`, and `product = 42`
 Connect the Shrike Lite, then run:
 
 ```powershell
-.\.venv\Scripts\python trace.py examples\multiplier\trace.json --port COM3
+.\.venv\Scripts\python trace.py examples\multiplier\trace.json --port COMx
 ```
 
-Replace `COM3` with the port shown by `trace.py doctor`. This builds and programs
-the FPGA, captures `a = 6`, `b = 7`, and `product = 42`, then opens GTKWave.
+Replace `COMx` with the port shown by `trace.py doctor`. This builds and programs the FPGA.
 
 ## Hardware examples
 

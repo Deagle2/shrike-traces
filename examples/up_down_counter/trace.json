@@ -1,0 +1,11 @@
+{
+  "design": "up_down_counter.v",
+  "top": "up_down_counter",
+  "clock": "clk",
+  "reset": {"signal": "reset", "active": 1},
+  "probes": ["count", "up_down", "reset"],
+  "trigger": "count == 17",
+  "stimulus": {
+    "up_down": {"sequence": [1, 0], "cycles_per_value": 32}
+  }
+}

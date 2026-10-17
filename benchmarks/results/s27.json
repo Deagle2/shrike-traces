@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "benchmark": "ISCAS89/s27",
+  "source": {
+    "netlist": "ffpga/src/iscas89_s27.v",
+    "declared_content": "4 inputs, 1 output, 3 D-type flip-flops, 2 inverters, 8 gates (1 AND, 1 NAND, 2 OR, 4 NOR)",
+    "upstream_repository": null,
+    "upstream_commit": null,
+    "note": "The netlist self-declares its gate counts but its upstream source is not yet pinned. Record the repository and commit before publishing this result."
+  },
+  "device": "Renesas SLG47910",
+  "toolchain": "Go Configure Software Hub 6.55.002 / shrike-gen",
+  "purpose": "Sequential-state capture: proves the analyzer records flip-flop state across samples, which a purely combinational benchmark cannot show.",
+  "baseline": {
+    "top": "S27Baseline",
+    "logic_rbbs": 2,
+    "luts": 7,
+    "flip_flops": 6,
+    "post_route_frequency_mhz": 295.159,
+    "bitstream_bytes": 46408,
+    "bitstream_sha256": "4111a7a96fdb2b4ab72a7fb17e4decaaa1e2d94d519fde6b3e4c44429353a305"
+  },
+  "instrumented": {
+    "top": "ShrikeTracesS27",
+    "logic_rbbs": 32,
+    "luts": 123,
+    "flip_flops": 55,
+    "post_route_frequency_mhz": 85.697,
+    "bitstream_bytes": 46408,
+    "bitstream_sha256": "0fd18aa871ad32da9a4f5708cae38250a1661a55a84068fa889389f68ba4ade8"
+  },
+  "overhead": {
+    "logic_rbbs_absolute": 30,
+    "luts_absolute": 116,
+    "flip_flops_absolute": 49,
+    "post_route_frequency_change_mhz": -209.462,
+    "post_route_frequency_change_percent": -70.966
+  },
+  "verification": {
+    "rtl_spi_samples": 16,
+    "rtl_mismatches": 0,
+    "hardware_samples": 16,
+    "hardware_mismatches": 0,
+    "capture_command_elapsed_seconds": 0.932,
+    "physical_vectors": "0..15",
+    "stimulus_index_at_trigger": 8,
+    "trigger_index": 8,
+    "trigger_word": "0x4018",
+    "device_protocol": 2,
+    "device_status": "0x27",
+    "trigger_ptr": 8,
+    "reproducibility": "Two independent physical captures returned the same trigger word 0x4018.",
+    "hardware_capture": "captures/s27_example.csv"
+  },
+  "notes": [
+    "The 46408-byte configuration size is fixed and is not a utilization metric.",
+    "Capture time is one Windows host measurement including Python startup and serial transport.",
+    "The baseline has unused SPI input pins optimized away; compare logic resources, not I/O timing.",
+    "Analyzer-only cost cross-checks at 116 LUTs against logic4 (116) and is the expected constant for the capture core.",
+    "s27 is a very small sequential circuit, so the percentage frequency overhead is dominated by the analyzer, not by the benchmark.",
+    "This experiment validates instrumentation overhead and observed sequential behaviour, not ATPG or manufacturing fault coverage."
+  ]
+}

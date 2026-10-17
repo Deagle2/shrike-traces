@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "c17",
+  "description": "ISCAS'85 c17 structural benchmark",
+  "top_module": "ShrikeTracesC17",
+  "test_target": "test_c17",
+  "bitstream": "bitstream/SHRIKE_TRACES_C17_V01.bin",
+  "sample_count": 16,
+  "sample_period_ns": 20,
+  "trigger_index": 8,
+  "signals": [
+    {"name": "N1", "lsb": 0, "width": 1},
+    {"name": "N2", "lsb": 1, "width": 1},
+    {"name": "N3", "lsb": 2, "width": 1},
+    {"name": "N6", "lsb": 3, "width": 1},
+    {"name": "N7", "lsb": 4, "width": 1},
+    {"name": "N22", "lsb": 5, "width": 1},
+    {"name": "N23", "lsb": 6, "width": 1},
+    {"name": "primed", "lsb": 14, "width": 1},
+    {"name": "triggered", "lsb": 15, "width": 1}
+  ],
+  "assertions": [
+    {
+      "name": "N22_ok",
+      "expression": "N22 == (not ((not (N1 and N3)) and (not (N2 and (not (N3 and N6))))))",
+      "expect": 1
+    },
+    {
+      "name": "N23_ok",
+      "expression": "N23 == (not ((not (N2 and (not (N3 and N6)))) and (not ((not (N3 and N6)) and N7))))",
+      "expect": 1
+    }
+  ]
+}

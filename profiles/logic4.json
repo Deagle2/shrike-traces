@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "id": "logic4",
+  "description": "y = (a & b) | (c & d), all 16 input vectors",
+  "top_module": "ShrikeTracesLogic4",
+  "test_target": "test_logic4",
+  "bitstream": "bitstream/SHRIKE_TRACES_LOGIC4_V01.bin",
+  "sample_count": 16,
+  "sample_period_ns": 20,
+  "trigger_index": 8,
+  "signals": [
+    {"name": "a", "lsb": 0, "width": 1},
+    {"name": "b", "lsb": 1, "width": 1},
+    {"name": "c", "lsb": 2, "width": 1},
+    {"name": "d", "lsb": 3, "width": 1},
+    {"name": "ab", "lsb": 4, "width": 1},
+    {"name": "cd", "lsb": 5, "width": 1},
+    {"name": "y", "lsb": 6, "width": 1},
+    {"name": "stimulus", "lsb": 7, "width": 4, "radix": "hex"},
+    {"name": "primed", "lsb": 14, "width": 1},
+    {"name": "triggered", "lsb": 15, "width": 1}
+  ],
+  "assertions": [
+    {
+      "name": "equation_ok",
+      "expression": "(ab == (a & b)) and (cd == (c & d)) and (y == ((a & b) | (c & d)))",
+      "expect": 1
+    }
+  ]
+}

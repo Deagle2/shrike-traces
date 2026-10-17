@@ -1,0 +1,16 @@
+name: shrike_traces
+author: Deagle2
+github: Deagle2
+boards:
+  - shrike-lite
+uses_fpga: true
+tags:
+  - logic-analyzer
+  - rtl-verification
+  - verilog
+  - micropython
+  - gtkwave
+description: >
+  Hardware-verified 16-bit on-chip logic analyzer for Shrike Lite with
+  trigger-centered capture, RP2040 SPI readout, profile-based decoding,
+  self-checking RTL simulations, and CSV/VCD export.

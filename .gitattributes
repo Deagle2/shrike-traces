@@ -1,0 +1,16 @@
+* text=auto
+
+*.v       text eol=lf
+*.sv      text eol=lf
+*.py      text eol=lf
+*.md      text eol=lf
+*.json    text eol=lf
+*.yaml    text eol=lf
+*.yml     text eol=lf
+*.pcf     text eol=lf
+*.fp      text eol=lf
+*.ffpga   text eol=lf
+*.vcd     text eol=lf
+Makefile  text eol=lf
+
+*.bin binary

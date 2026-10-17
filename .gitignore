@@ -1,0 +1,30 @@
+# Local tools and build output
+.venv/
+.shrike-traces.json
+generated/
+.shrike-traces/
+bitstream/
+ffpga/build/
+sim/build/
+__pycache__/
+*.py[cod]
+*.vvp
+*.fst
+
+# Runtime captures. Keep only the five examples in the repository.
+captures/*
+!captures/counter_example.csv
+!captures/counter_example.vcd
+!captures/multiplier_easy_example.csv
+!captures/multiplier_easy_example.vcd
+!captures/logic4_example.csv
+!captures/logic4_example.vcd
+!captures/c17_example.csv
+!captures/c17_example.vcd
+!captures/s27_example.csv
+!captures/s27_example.vcd
+
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

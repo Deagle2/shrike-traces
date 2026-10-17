@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "id": "counter",
+  "description": "Counter/FSM bring-up DUT",
+  "top_module": "ShrikeTraces",
+  "test_target": "test_spi",
+  "bitstream": "bitstream/SHRIKE_TRACES_V02.bin",
+  "sample_count": 16,
+  "sample_period_ns": 20,
+  "trigger_index": 8,
+  "signals": [
+    {"name": "count", "lsb": 0, "width": 8, "radix": "hex"},
+    {"name": "state", "lsb": 8, "width": 2, "radix": "binary"},
+    {"name": "running", "lsb": 10, "width": 1},
+    {"name": "done", "lsb": 11, "width": 1},
+    {"name": "start", "lsb": 12, "width": 1},
+    {"name": "terminal", "lsb": 13, "width": 1},
+    {"name": "primed", "lsb": 14, "width": 1},
+    {"name": "triggered", "lsb": 15, "width": 1}
+  ]
+}

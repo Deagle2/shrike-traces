@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "s27",
+  "description": "ISCAS'89 s27 reset-less sequential benchmark",
+  "top_module": "ShrikeTracesS27",
+  "test_target": "test_s27",
+  "bitstream": "bitstream/SHRIKE_TRACES_S27_V01.bin",
+  "sample_count": 16,
+  "sample_period_ns": 20,
+  "trigger_index": 8,
+  "signals": [
+    {"name": "stimulus", "lsb": 0, "width": 4, "radix": "hex"},
+    {"name": "G17", "lsb": 4, "width": 1},
+    {"name": "primed", "lsb": 14, "width": 1},
+    {"name": "triggered", "lsb": 15, "width": 1}
+  ],
+  "expected_word_mask": "0x001f",
+  "expected_words": [
+    "0x0010", "0x0011", "0x0012", "0x0013",
+    "0x0014", "0x0015", "0x0016", "0x0017",
+    "0x0018", "0x0009", "0x000a", "0x001b",
+    "0x001c", "0x000d", "0x000e", "0x001f"
+  ]
+}

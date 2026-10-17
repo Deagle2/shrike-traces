@@ -1,0 +1,2 @@
+# PC-to-MicroPython transport used for flashing and trace capture.
+mpremote==1.29.0

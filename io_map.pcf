@@ -1,0 +1,32 @@
+# io_map.pcf — IO pin constraints for shrike-traces (SLG47910V / Shrike Lite)
+#
+# Syntax:  set_io <signal_name>  <assignment>
+#
+# Run from the project directory:
+#   python3 shrike_gen/gen_io_spec.py --list-pins    ← full pin reference
+#   make update                                       ← apply changes
+#
+# ── Pin assignments ───────────────────────────────────────────────────────────
+# GPIO pins by package number (use PIN_N for output, PIN_N_OE for OE, PIN_N_IN for input):
+#   PIN_1  .. PIN_9    east-edge GPIOs  →  PINs  1-9  (chip_x=31)
+#   PIN_13 .. PIN_20   west-edge GPIOs  →  PINs 13-20 (chip_x=0)
+#   PIN_23,  PIN_24    east-edge GPIOs  →  PINs 23,24 (chip_x=31)
+#
+# Special functions:
+#   CLK               External clock input (EFLX_CLK West, Input=0)
+#   OSC_EN            Oscillator Enable
+#   INT_FPGA_RESET    Internal reset trigger
+#   nRST              nRST pin input (PIN 11, read-only)
+
+# ── Edit below this line ──────────────────────────────────────────────────────
+
+set_io clk     CLK         # external clock → EFLX_CLK West Input=0
+set_io LED     PIN_7       # GPIO16_OUT [PIN 7]
+set_io LED_en  PIN_7_OE    # GPIO16_OE  [PIN 7]  — drive HIGH to enable output
+set_io clk_en  OSC_EN      # Oscillator enable
+set_io rst_n   PIN_9_IN    # RP2040 GPIO14 -> FPGA reset input
+set_io spi_sck PIN_16_IN   # RP2040 GPIO2 / SPI0 SCK
+set_io spi_ss_n PIN_17_IN  # RP2040 GPIO1 / chip select
+set_io spi_mosi PIN_18_IN  # RP2040 GPIO3 / SPI0 MOSI
+set_io spi_miso PIN_19     # RP2040 GPIO0 / SPI0 MISO
+set_io spi_miso_en PIN_19_OE

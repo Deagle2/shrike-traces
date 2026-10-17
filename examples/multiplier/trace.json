@@ -1,0 +1,7 @@
+{
+  "design": "multiplier4.v",
+  "top": "multiplier4",
+  "probes": ["product", "a", "b"],
+  "trigger": "a == 6 and b == 7",
+  "stimulus": "counter"
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "benchmark": "ISCAS85/c17",
+  "source": {
+    "repository": "https://github.com/santoshsmalagi/Benchmarks",
+    "commit": "8a0b4d2ca0e85e9d2425a96212605e5327a22c61",
+    "path": "ISCAS85/c17/c17.v",
+    "sha256": "656bf0f1dbb02adb5cb9452d9c2031201a0c7c655441b1d47d111d8744d00f3c"
+  },
+  "device": "Renesas SLG47910",
+  "toolchain": "Go Configure Software Hub 6.55.002 / shrike-gen",
+  "baseline": {
+    "top": "C17Baseline",
+    "logic_rbbs": 2,
+    "luts": 8,
+    "flip_flops": 5,
+    "post_route_frequency_mhz": 227.790,
+    "bitstream_bytes": 46408,
+    "bitstream_sha256": "f9997916cb826777f37d1b508baa8a9b5416511a18d6cb493611ba8fec1145cc"
+  },
+  "instrumented": {
+    "top": "ShrikeTracesC17",
+    "logic_rbbs": 42,
+    "luts": 144,
+    "flip_flops": 52,
+    "post_route_frequency_mhz": 87.252,
+    "bitstream_bytes": 46408,
+    "bitstream_sha256": "3fa45ed004c232a9836f5e6cf16507f3070b6176862808c4ea42eae881658acf"
+  },
+  "overhead": {
+    "logic_rbbs_absolute": 40,
+    "luts_absolute": 136,
+    "flip_flops_absolute": 47,
+    "post_route_frequency_change_mhz": -140.538,
+    "post_route_frequency_change_percent": -61.696
+  },
+  "verification": {
+    "host_truth_table_vectors": 32,
+    "rtl_spi_samples": 16,
+    "rtl_mismatches": 0,
+    "hardware_samples": 16,
+    "hardware_mismatches": 0,
+    "capture_command_elapsed_seconds": 1.541,
+    "physical_vectors": "0..15",
+    "trigger_vector": 8,
+    "trigger_index": 8,
+    "trigger_word": "0x4008",
+    "hardware_capture": "captures/c17_example.csv"
+  },
+  "notes": [
+    "The 46408-byte configuration size is fixed and is not a utilization metric.",
+    "Capture time is one Windows host measurement including Python startup and serial transport.",
+    "The baseline has unused SPI input pins optimized away; compare logic resources, not I/O timing.",
+    "This experiment validates instrumentation overhead and observed function, not ATPG or manufacturing fault coverage."
+  ]
+}

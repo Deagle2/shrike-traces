@@ -125,39 +125,24 @@ The four-bit multiplier is another starter example:
 
 It triggers when `a == 6 && b == 7`; the product at that sample is 42.
 
-## Import the vendor PWM example
+## Demo (Multiplier)
 
-shrike-traces can instrument the unchanged `pwm_4ch` example from the Vicharak
-Shrike repository. Starting in a folder that contains `shrike-traces`:
+GTKWave shows the VCD capture triggering at `a = 6`, `b = 7`, and `product = 42`.
+
+![Four-bit multiplier capture in GTKWave](media/multiplier_gtkwave.png)
+
+### Reproduce this capture
+
+Connect the Shrike Lite, then run:
 
 ```powershell
-git -c core.protectNTFS=false clone --filter=blob:none --sparse https://github.com/vicharak-in/shrike.git
-cd shrike
-git -c core.protectNTFS=false sparse-checkout set examples/pwm_4ch
-cd ..
-cd shrike-traces
-.\.venv\Scripts\python trace.py add-project ..\shrike\examples\pwm_4ch
-.\.venv\Scripts\python trace.py build
-.\.venv\Scripts\python trace.py capture --port COM3
+.\.venv\Scripts\python trace.py examples\multiplier\trace.json --port COM3
 ```
 
-Replace `COM3` with the port shown by `trace.py doctor`. The importer finds
-`DemoSequentialBreathing`, records `led_0` through `led_7`, and triggers when
-`led_0` becomes high. It builds an instrumented copy under `generated\`; the
-vendor project is not edited. The build can take several minutes.
-Allow about 11 GB of temporary free space for this nearly full FPGA design. The
-Renesas placer creates these files and removes them when it finishes.
+Replace `COM3` with the port shown by `trace.py doctor`. This builds and programs
+the FPGA, captures `a = 6`, `b = 7`, and `product = 42`, then opens GTKWave.
 
-The same three commands work for other projects when the top module has literal-
-width ANSI Verilog ports, a `(* top *)` marker, one positive-edge clock named
-`clk`, `clock`, or `i_osc`, and a recognized reset. The importer records top-level
-outputs that fit in 16 bits and ties other inputs low. SystemVerilog or VHDL,
-symbolic port widths, several clocks, internal probes, and custom input activity
-need manual integration. Nothing in the importer is specific to PWM4.
-
-After changing or selecting another project, run `build` again before `capture`.
-
-## Saved hardware examples
+## Hardware examples
 
 - [Counter CSV](captures/counter_example.csv) and [VCD](captures/counter_example.vcd)
 - [Multiplier CSV](captures/multiplier_easy_example.csv) and [VCD](captures/multiplier_easy_example.vcd)
